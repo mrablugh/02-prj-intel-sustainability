@@ -1,6 +1,44 @@
+@font-face {
+    font-family: "intel-clear";
+    src: url("https://www.intel.com/etc.clientlibs/settings/wcm/designs/ver/260203/intel/us/en/Fonts/resources/intel-clear-latin.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "intel-one";
+    src: url("https://www.intel.com/etc.clientlibs/settings/wcm/designs/ver/260203/intel/us/en/Fonts/resources/intelone-display-light.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "intel-one";
+    src: url("https://www.intel.com/etc.clientlibs/settings/wcm/designs/ver/260203/intel/us/en/Fonts/resources/intelone-display-regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    font-family: "intel-clear", Tahoma, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #262626;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "intel-one", "intel-clear", Helvetica, Arial, sans-serif;
+    font-weight: 300;
 }
 
 header {
