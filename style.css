@@ -22,6 +22,10 @@
     font-display: swap;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -29,6 +33,7 @@ body {
     font-size: 16px;
     line-height: 1.42857143;
     color: #262626;
+    overflow-x: hidden;
 }
 
 h1,
@@ -562,7 +567,12 @@ header {
     box-sizing: border-box;
     flex-shrink: unset;
     display: flex;
-    flex-wrap: wrap;  
+    flex-wrap: nowrap;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
 }
 
 .timelineCard {
@@ -640,7 +650,10 @@ header {
     overflow: hidden;
     flex-grow: 1;
     z-index: 1;
-    flex-basis: 50%;
+    position: relative;
+    flex: 0 0 clamp(320px, 70vw, 560px);
+    min-width: clamp(320px, 70vw, 560px);
+    scroll-snap-align: start;
     cursor: default;
 }
 
@@ -971,8 +984,26 @@ header {
     color: #fff;
     text-align: center;
     box-sizing: border-box;
-    margin: 0 0 11px;
-    line-height: 1.25;
+    margin: 0;
+    position: absolute;
+    bottom: 3rem;
+    left: 0;
+    right: 0;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
+    line-height: 1.5;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0.75rem);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.timelineCard:hover .caption {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
     margin-bottom: 0;
 }
 
@@ -1342,4 +1373,63 @@ header {
     box-sizing: border-box;
     line-height: 1.25;
     margin: .25rem 0;
+}
+
+@media (max-width: 960px) {
+    #timeline {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        gap: 0;
+        padding: 0;
+    }
+
+    .timelineCard {
+        display: block;
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        min-height: 320px;
+        margin: 0;
+    }
+
+    .timelineText {
+        padding: 2rem 1.25rem;
+    }
+
+    .caption {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: none;
+        position: static;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        margin-top: 0.75rem;
+    }
+
+    #headerBoxContent {
+        padding-inline: 0;
+        padding-block: 2rem 2.5rem;
+    }
+
+    #headerSubbox {
+        width: 100%;
+    }
+
+    #mainHeading {
+        width: 100%;
+        padding-inline: 1rem;
+    }
+
+    #mainHeading::after {
+        display: none;
+    }
 }
